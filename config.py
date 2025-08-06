@@ -6,18 +6,23 @@ class Config:
     DHAN_ACCESS_TOKEN = os.getenv("DHAN_ACCESS_TOKEN", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkaGFuIiwicGFydG5lcklkIjoiIiwiZXhwIjoxNzU2ODc5NjkwLCJ0b2tlbkNvbnN1bWVyVHlwZSI6IlNFTEYiLCJ3ZWJob29rVXJsIjoiIiwiZGhhbkNsaWVudElkIjoiMTEwMDk4NzY5NyJ9.haEPrZs5n7Z32SkQ3gnkq1rBxqEY64RP4MtzdTVxrqPGoBk4UU6MRUYk3Fho27SqVdF2obg0VruAAx0JqK6TLA")
     
     # Trading Parameters
-    WATCHLIST_STOCKS = {
-        "RELIANCE": "500325",
-        "TCS": "532540", 
-        "INFY": "500209",
-        "HDFC": "500180",
-        "ITC": "500875",
-        "ICICIBANK": "532174",
-        "BHARTIARTL": "532454",
-        "SBIN": "500112",
-        "LT": "500510",
-        "HCLTECH": "532281"
-    }
+    # WATCHLIST_STOCKS = {
+    #     "RELIANCE": "500325",
+    #     "TCS": "532540", 
+    #     "INFY": "500209",
+    #     "HDFC": "500180",
+    #     "ITC": "500875",
+    #     "ICICIBANK": "532174",
+    #     "BHARTIARTL": "532454",
+    #     "SBIN": "500112",
+    #     "LT": "500510",
+    #     "HCLTECH": "532281"
+    # }
+     # Trading Parameters
+    WATCHLIST_STOCKS = [
+        "RELIANCE", "TCS", "INFY", "HDFC", "ITC", 
+        "ICICIBANK", "BHARTIARTL", "SBIN", "LT", "HCLTECH"
+    ]
     
     TIMEFRAME = "3MIN"
     SMA_PERIOD = 50

@@ -43,7 +43,6 @@ async function runBacktest() {
         showAlert('Error running backtest', 'error');
     }
 }
-
 function displayBacktestResults(results) {
     const container = document.getElementById('backtestResults');
     let html = '<div class="performance-grid">';
@@ -57,7 +56,10 @@ function displayBacktestResults(results) {
                 </div>
             `;
         } else {
-            const winRateColor = result.win_rate >= 50 ? 'positive' : 'negative';
+            const winRate = result.win_rate || Math.round(
+                (result.winning_trades / result.total_trades) * 100
+            ) || 0;
+            const winRateColor = winRate >= 50 ? 'positive' : 'negative';
             const pnlColor = result.total_pnl >= 0 ? 'positive' : 'negative';
             
             html += `
@@ -65,8 +67,8 @@ function displayBacktestResults(results) {
                     <div class="metric-value">${symbol}</div>
                     <div class="metric-label">
                         Trades: ${result.total_trades}<br>
-                        Win Rate: <span class="${winRateColor}">${result.win_rate}%</span><br>
-                        P&L: <span class="${pnlColor}">₹${result.total_pnl}</span>
+                        Win Rate: <span class="${winRateColor}">${winRate}%</span><br>
+                        P&L: <span class="${pnlColor}">₹${result.total_pnl?.toFixed(2) || 0}</span>
                     </div>
                 </div>
             `;
@@ -76,6 +78,7 @@ function displayBacktestResults(results) {
     html += '</div>';
     container.innerHTML = html;
 }
+
 
 // Strategy performance
 async function loadStrategyPerformance() {
