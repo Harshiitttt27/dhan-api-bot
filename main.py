@@ -171,52 +171,54 @@ async def index(request: Request):
 @app.post("/api/backtest/run")
 async def run_backtest(symbol: Optional[str] = None, days: int = 30):
     """Run strategy backtest"""
+    print(7)
     try:
         results = {}
         symbols_to_test = [symbol] if symbol else list(config.WATCHLIST_STOCKS)
 
         for sym in symbols_to_test:
             logger.info(f"Running backtest for {sym}...")
-            
+
             security_id = dhan_client.get_security_id(sym)
             if not security_id:
                 results[sym] = {'error': f'Security ID not found for {sym}'}
                 continue
-            
 
             df_3min = dhan_client.get_historical_data(security_id, days)
-            logger.info(f"Received DataFrame for {symbol}:")
-            logger.info(df_3min.head())
+            print(8)
             if df_3min is None:
-                 logger.error("DataFrame is None — likely due to data fetch failure.")
-                 return JsonResponse({symbol: {"error": "No data returned from API"}})
+                logger.error("DataFrame is None — likely due to data fetch failure.")
+                results[sym] = {"error": "No data returned from API"}
+                print(9)
+                continue
             elif df_3min.empty:
-                 logger.warning("DataFrame is empty.")
-                 return JsonResponse({symbol: {"error": "Empty data returned from API"}})
+                logger.warning("DataFrame is empty.")
+                results[sym] = {"error": "Empty data returned from API"}
+                print(10)
+                continue
             else:
-                 logger.info(df_3min.head())
-                 logger.info(f"Total rows: {len(df_3min)}")
+                logger.info(f"Received DataFrame for {sym}:\n{df_3min.head()}")
+                logger.info(f"Total rows: {len(df_3min)}")
+            print(11)
 
-            if df_3min is None or len(df_3min) < 100:
+            if len(df_3min) < 100:
                 results[sym] = {'error': 'Insufficient data for analysis'}
                 continue
-            
+
             backtest_result = backtest_engine.run_backtest(df_3min, sym)
 
-            # ✅ Compute win_rate here
             total_trades = backtest_result.get("total_trades", 0)
             winning_trades = backtest_result.get("winning_trades", 0)
             win_rate = round((winning_trades / total_trades * 100), 2) if total_trades else 0
-            
-            # ✅ Add win_rate and ensure P&L is float
+
             backtest_result["win_rate"] = win_rate
             backtest_result["total_pnl"] = float(backtest_result.get("total_pnl", 0))
 
             results[sym] = backtest_result
             logger.info(f"Backtest completed for {sym}: {total_trades} trades, win_rate={win_rate}%")
-        
+        print(12)
         return results
-        
+
     except Exception as e:
         logger.error(f"Error running backtest: {str(e)}")
         return {'error': str(e)}
@@ -224,6 +226,7 @@ async def run_backtest(symbol: Optional[str] = None, days: int = 30):
 
 @app.get("/api/backtest/results")
 async def get_backtest_results():
+    print(6)
     return backtest_engine.trades
 
 @app.get("/api/strategy/performance")

@@ -202,6 +202,7 @@ class BacktestEngine:
     
     def run_backtest(self, df: pd.DataFrame, symbol: str) -> Dict:
         print(df)
+        print(1)
         """Run backtest on historical data"""
         print(f"✅ Loading data for symbol: {symbol}")
         print(f"✅ Loaded {len(df)} rows before filtering.")
@@ -212,6 +213,7 @@ class BacktestEngine:
         # print(f"✅ Filtered dates: {df_filtered['timestamp'].min()} to {df_filtered['timestamp'].max()}")
 
         if df is None or df.empty:
+            print(2)
             return {'error': 'No data provided for backtest'}
             
         try:
@@ -256,6 +258,7 @@ class BacktestEngine:
                     i += 1
             
             self.trades[symbol] = self._calculate_performance_metrics(trades)
+            print(self.trades[symbol]," BacktestEngine")
             return self.trades[symbol]
             
         except Exception as e:
@@ -268,7 +271,7 @@ class BacktestEngine:
             entry_price = trade_params['entry_price']
             stop_loss = trade_params['stop_loss']
             target_price = trade_params['target_price']
-            
+            print(3)
             trade = {
                 'symbol': symbol,
                 'signal': signal,
@@ -344,6 +347,7 @@ class BacktestEngine:
                 
                 trade['pnl'] = round(pnl, 2)
                 return trade
+            print(4)
             return None
             
         except Exception as e:
@@ -354,7 +358,7 @@ class BacktestEngine:
         """Calculate comprehensive performance metrics"""
         if not trades:
             return {'error': 'No trades executed'}
-        
+        print(5)
         closed_trades = [t for t in trades if t.get('status') == 'CLOSED']
         
         if not closed_trades:
@@ -389,7 +393,7 @@ class BacktestEngine:
                 drawdown = peak - pnl
                 if drawdown > max_drawdown:
                     max_drawdown = drawdown
-            
+            print(6)
             return {
                 'total_trades': total_trades,
                 'winning_trades': total_wins,

@@ -110,7 +110,7 @@ class DhanClient:
             to_date_str = to_date.strftime("%Y-%m-%d 15:30:00")
 
             logger.info(f"DEBUG CALL >>> {security_id} NSE_EQ EQUITY 1 {from_date_str} {to_date_str}")
-
+            print(13)
             # Fetch 1-minute data (must pass numeric security_id)
             data = self.client.intraday_minute_data(
                 security_id=security_id,
@@ -136,7 +136,7 @@ class DhanClient:
                     'volume': 'volume'
                 }
                 df.rename(columns=rename_map, inplace=True)
-
+                print(14)
                 if 'timestamp' not in df.columns:
                     raise KeyError("No timestamp column detected in API response")
 
@@ -145,6 +145,7 @@ class DhanClient:
                     sample_ts = df['timestamp'].iloc[0]
 
                     if isinstance(sample_ts, (int, float)):
+                        print(15)
                         if sample_ts > 1e12:
                             df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms', utc=True)
                         else:
@@ -152,12 +153,14 @@ class DhanClient:
                     else:
                         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce', utc=True)
                 except Exception as e:
+                    print(16)
                     logger.error(f"[TimestampParseError] Could not parse timestamps: {e}")
                     return None
 
                 df = df.sort_values('timestamp')
                 df = df[['timestamp', 'open', 'high', 'low', 'close', 'volume']]
-
+                print(17)
+                print(df)
                 # Convert 1-minute data to 3-minute candles
                 return self._resample_to_3min(df)
 
@@ -206,7 +209,7 @@ class DhanClient:
         if df_3min is None or df_3min.empty:
             logger.warning(f"No data after resampling.")
             return pd.DataFrame()  # Explicitly return empty DataFrame
-
+        print(18)
         return df_3min.reset_index()
 
 
