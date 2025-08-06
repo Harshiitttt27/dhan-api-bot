@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhan Trading Bot - Backtesting Dashboard</title>
+    <!-- ✅ Correct CSS path for FastAPI static -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Dhan Trading Bot - Strategy Backtesting</h1>
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-dot connected"></div>
+                    <span>Connected to Dhan API</span>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="runBacktest()">
+                        🔬 Run Backtest
+                    </button>
+                    <button class="btn btn-info" onclick="loadStrategyPerformance()">
+                        📊 Strategy Performance
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('backtest')">Backtesting</button>
+            <button class="nav-tab" onclick="showTab('performance')">Performance</button>
+            <button class="nav-tab" onclick="showTab('trades')">Trade History</button>
+        </div>
+
+        <div id="alertContainer"></div>
+
+        <!-- Backtesting Tab -->
+        <div id="backtest" class="tab-content active">
+            <div class="card">
+                <h3>🧪 Strategy Backtesting</h3>
+                <div class="backtest-controls">
+                    <select id="symbolSelect">
+                        <option value="">All Symbols</option>
+                        <option value="RELIANCE">RELIANCE</option>
+                        <option value="TCS">TCS</option>
+                        <option value="INFY">INFY</option>
+                        <option value="HDFC">HDFC</option>
+                        <option value="ITC">ITC</option>
+                    </select>
+                    <label>
+                        Days: <input type="number" id="backtestDays" value="30" min="1" max="90">
+                    </label>
+                    <button class="btn btn-warning" onclick="runBacktest()">
+                        🔬 Run Backtest
+                    </button>
+                </div>
+                
+                <div id="backtestProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <p id="progressText">Running backtest...</p>
+                </div>
+
+                <div id="backtestResults"></div>
+            </div>
+        </div>
+
+        <!-- Performance Tab -->
+        <div id="performance" class="tab-content">
+            <div class="card">
+                <h3>📈 Strategy Performance</h3>
+                <div id="strategyPerformance">
+                    <div class="loading"></div> Loading performance data...
+                </div>
+            </div>
+        </div>
+
+        <!-- Trade History Tab -->
+        <div id="trades" class="tab-content">
+            <div class="card">
+                <h3>📋 Recent Trades</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Signal</th>
+                                <th>Entry</th>
+                                <th>Exit</th>
+                                <th>P&L</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tradesBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center;">Run backtest to see trades</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
