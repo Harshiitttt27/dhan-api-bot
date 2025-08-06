@@ -192,6 +192,7 @@ from datetime import time
 from typing import List, Dict, Any
 from config import Config
 from strategy import TradingStrategy
+from dhan_client import DhanClient
 
 class BacktestEngine:
     def __init__(self, strategy: TradingStrategy):
@@ -203,6 +204,7 @@ class BacktestEngine:
     def run_backtest(self, df: pd.DataFrame, symbol: str) -> Dict:
         print(df)
         print(1)
+        
         """Run backtest on historical data"""
         print(f"✅ Loading data for symbol: {symbol}")
         print(f"✅ Loaded {len(df)} rows before filtering.")
@@ -219,6 +221,7 @@ class BacktestEngine:
         try:
             df = self.strategy.analyze_candle_data(df)
             trades = []
+            executed_entries = set()
             
             i = 0
             while i < len(df):
@@ -237,14 +240,18 @@ class BacktestEngine:
                             entry_time = df.iloc[entry_index]['timestamp']
                             if isinstance(entry_time, pd.Timestamp):
                                 entry_time = entry_time.to_pydatetime()
-                                
+                            
+                            if entry_time in executed_entries:
+                                i = entry_index + 1
+                                continue
+                            executed_entries.add(entry_time)
+
                             if entry_time.time() > self.config.NO_ENTRY_AFTER:
                                 i = entry_index
                                 continue
                             
-                            trade_result = self._simulate_trade(
-                                df, entry_index, trade_params, signal, symbol
-                            )
+                            trade_params = self.strategy.calculate_entry_exit(rejection, signal)
+                            trade_result = self._simulate_trade(df, entry_index, trade_params, signal, symbol)
                             
                             if trade_result:
                                 trades.append(trade_result)

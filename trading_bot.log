@@ -759,3 +759,402 @@
 4 2025-08-01 09:27:00+05:30  1492.2  1492.2  1490.0  1490.9   46321.0
 2025-08-06 18:25:29,427 - __main__ - INFO - Total rows: 500
 2025-08-06 18:25:29,532 - __main__ - INFO - Backtest completed for INFY: 2 trades, win_rate=0.0%
+2025-08-06 18:28:42,788 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 18:28:46,052 - main - INFO - Running backtest for HDFC...
+2025-08-06 18:28:46,563 - dhan_client - WARNING - Using fallback match for symbol: HDFC
+2025-08-06 18:28:46,567 - dhan_client - INFO - DEBUG CALL >>> 10619 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:28:57,834 - main - INFO - Received DataFrame for HDFC:
+                  timestamp   open   high    low  close  volume
+0 2025-07-07 09:15:00+05:30  69.41  69.41  69.15  69.15  1000.0
+1 2025-07-07 09:18:00+05:30  69.49  69.50  69.45  69.50   153.0
+2 2025-07-07 09:21:00+05:30  69.50  69.72  69.50  69.71   862.0
+3 2025-07-07 09:24:00+05:30  69.57  69.67  69.57  69.60    50.0
+4 2025-07-07 09:27:00+05:30  69.41  69.63  69.41  69.63    13.0
+2025-08-06 18:28:57,835 - main - INFO - Total rows: 2875
+2025-08-06 18:28:58,446 - main - INFO - Backtest completed for HDFC: 19 trades, win_rate=26.32%
+2025-08-06 18:29:18,756 - main - INFO - Running backtest for INFY...
+2025-08-06 18:29:19,335 - dhan_client - INFO - DEBUG CALL >>> 1594 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:29:27,305 - main - INFO - Received DataFrame for INFY:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1637.4  1638.1  1633.3  1636.9  34801.0
+1 2025-07-07 09:18:00+05:30  1637.6  1642.3  1636.4  1640.7  40054.0
+2 2025-07-07 09:21:00+05:30  1640.6  1641.0  1636.8  1637.2  32923.0
+3 2025-07-07 09:24:00+05:30  1636.8  1638.0  1635.0  1635.0  23190.0
+4 2025-07-07 09:27:00+05:30  1634.8  1635.3  1634.0  1634.9  20866.0
+2025-08-06 18:29:27,306 - main - INFO - Total rows: 2875
+2025-08-06 18:29:27,762 - main - INFO - Backtest completed for INFY: 17 trades, win_rate=29.41%
+2025-08-06 18:29:41,745 - main - INFO - Running backtest for RELIANCE...
+2025-08-06 18:29:42,322 - dhan_client - WARNING - Security ID not found for RELIANCE
+2025-08-06 18:29:50,120 - main - INFO - Running backtest for RELIANCE...
+2025-08-06 18:29:50,675 - dhan_client - WARNING - Security ID not found for RELIANCE
+2025-08-06 18:29:50,677 - main - INFO - Running backtest for TCS...
+2025-08-06 18:29:51,157 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:29:53,730 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3415.0  3415.2  3411.0  3412.2  13249.0
+1 2025-07-07 09:18:00+05:30  3412.0  3419.0  3411.6  3417.8  22060.0
+2 2025-07-07 09:21:00+05:30  3416.7  3420.6  3415.4  3416.2  17785.0
+3 2025-07-07 09:24:00+05:30  3416.1  3418.2  3411.0  3412.1  13890.0
+4 2025-07-07 09:27:00+05:30  3411.1  3414.4  3408.4  3413.3  11907.0
+2025-08-06 18:29:53,731 - main - INFO - Total rows: 2875
+2025-08-06 18:29:54,269 - main - INFO - Backtest completed for TCS: 16 trades, win_rate=12.5%
+2025-08-06 18:29:54,270 - main - INFO - Running backtest for INFY...
+2025-08-06 18:29:54,694 - dhan_client - INFO - DEBUG CALL >>> 1594 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:29:57,077 - main - INFO - Received DataFrame for INFY:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1637.4  1638.1  1633.3  1636.9  34801.0
+1 2025-07-07 09:18:00+05:30  1637.6  1642.3  1636.4  1640.7  40054.0
+2 2025-07-07 09:21:00+05:30  1640.6  1641.0  1636.8  1637.2  32923.0
+3 2025-07-07 09:24:00+05:30  1636.8  1638.0  1635.0  1635.0  23190.0
+4 2025-07-07 09:27:00+05:30  1634.8  1635.3  1634.0  1634.9  20866.0
+2025-08-06 18:29:57,078 - main - INFO - Total rows: 2875
+2025-08-06 18:29:57,556 - main - INFO - Backtest completed for INFY: 17 trades, win_rate=29.41%
+2025-08-06 18:29:57,557 - main - INFO - Running backtest for HDFC...
+2025-08-06 18:29:57,977 - dhan_client - WARNING - Using fallback match for symbol: HDFC
+2025-08-06 18:29:57,979 - dhan_client - INFO - DEBUG CALL >>> 10619 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:29:58,609 - main - INFO - Received DataFrame for HDFC:
+                  timestamp   open   high    low  close  volume
+0 2025-07-07 09:15:00+05:30  69.41  69.41  69.15  69.15  1000.0
+1 2025-07-07 09:18:00+05:30  69.49  69.50  69.45  69.50   153.0
+2 2025-07-07 09:21:00+05:30  69.50  69.72  69.50  69.71   862.0
+3 2025-07-07 09:24:00+05:30  69.57  69.67  69.57  69.60    50.0
+4 2025-07-07 09:27:00+05:30  69.41  69.63  69.41  69.63    13.0
+2025-08-06 18:29:58,610 - main - INFO - Total rows: 2875
+2025-08-06 18:29:59,183 - main - INFO - Backtest completed for HDFC: 19 trades, win_rate=26.32%
+2025-08-06 18:29:59,184 - main - INFO - Running backtest for ITC...
+2025-08-06 18:29:59,612 - dhan_client - INFO - DEBUG CALL >>> 1660 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:30:01,447 - main - INFO - Received DataFrame for ITC:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  412.15  413.10  412.10  412.85  58748.0
+1 2025-07-07 09:18:00+05:30  412.80  413.25  412.60  413.00  65363.0
+2 2025-07-07 09:21:00+05:30  413.00  413.05  412.55  412.80  68791.0
+3 2025-07-07 09:24:00+05:30  412.80  413.40  412.65  413.35  77032.0
+4 2025-07-07 09:27:00+05:30  413.35  413.55  413.15  413.40  33721.0
+2025-08-06 18:30:01,448 - main - INFO - Total rows: 2875
+2025-08-06 18:30:01,964 - main - INFO - Backtest completed for ITC: 17 trades, win_rate=17.65%
+2025-08-06 18:30:01,964 - main - INFO - Running backtest for ICICIBANK...
+2025-08-06 18:30:02,426 - dhan_client - INFO - DEBUG CALL >>> 4963 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:30:03,694 - main - INFO - Received DataFrame for ICICIBANK:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1436.2  1436.8  1434.5  1436.1  65932.0
+1 2025-07-07 09:18:00+05:30  1435.9  1436.5  1433.3  1435.8  53911.0
+2 2025-07-07 09:21:00+05:30  1435.8  1436.8  1434.2  1434.3  44980.0
+3 2025-07-07 09:24:00+05:30  1434.5  1434.5  1433.5  1434.2  40818.0
+4 2025-07-07 09:27:00+05:30  1433.8  1434.1  1432.8  1433.1  21040.0
+2025-08-06 18:30:03,695 - main - INFO - Total rows: 2875
+2025-08-06 18:30:04,198 - main - INFO - Backtest completed for ICICIBANK: 19 trades, win_rate=31.58%
+2025-08-06 18:30:04,198 - main - INFO - Running backtest for BHARTIARTL...
+2025-08-06 18:30:04,612 - dhan_client - INFO - DEBUG CALL >>> 10604 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:30:05,329 - main - INFO - Received DataFrame for BHARTIARTL:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  2023.8  2024.5  2019.6  2021.7  35532.0
+1 2025-07-07 09:18:00+05:30  2021.4  2023.8  2017.2  2020.9  34592.0
+2 2025-07-07 09:21:00+05:30  2020.9  2021.7  2018.0  2021.7  30710.0
+3 2025-07-07 09:24:00+05:30  2021.7  2027.6  2021.7  2027.1  68810.0
+4 2025-07-07 09:27:00+05:30  2026.7  2026.7  2023.3  2024.5  42744.0
+2025-08-06 18:30:05,331 - main - INFO - Total rows: 2875
+2025-08-06 18:30:05,971 - main - INFO - Backtest completed for BHARTIARTL: 17 trades, win_rate=17.65%
+2025-08-06 18:30:05,971 - main - INFO - Running backtest for SBIN...
+2025-08-06 18:30:06,463 - dhan_client - INFO - DEBUG CALL >>> 3045 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:30:07,220 - main - INFO - Received DataFrame for SBIN:
+                  timestamp    open    high     low  close   volume
+0 2025-07-07 09:15:00+05:30  808.50  808.50  807.05  807.7  72676.0
+1 2025-07-07 09:18:00+05:30  807.75  808.80  807.20  808.5  37492.0
+2 2025-07-07 09:21:00+05:30  808.75  809.85  808.50  809.0  67187.0
+3 2025-07-07 09:24:00+05:30  809.05  809.20  807.80  808.4  45906.0
+4 2025-07-07 09:27:00+05:30  808.40  808.70  807.70  807.7  29593.0
+2025-08-06 18:30:07,221 - main - INFO - Total rows: 2875
+2025-08-06 18:30:07,768 - main - INFO - Backtest completed for SBIN: 18 trades, win_rate=16.67%
+2025-08-06 18:30:07,769 - main - INFO - Running backtest for LT...
+2025-08-06 18:30:08,213 - dhan_client - INFO - DEBUG CALL >>> 11483 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:30:09,004 - main - INFO - Received DataFrame for LT:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3586.8  3589.4  3585.0  3589.0   3289.0
+1 2025-07-07 09:18:00+05:30  3588.5  3589.2  3580.0  3588.8   6045.0
+2 2025-07-07 09:21:00+05:30  3588.7  3596.7  3588.0  3593.8  13314.0
+3 2025-07-07 09:24:00+05:30  3593.8  3596.1  3587.5  3590.9   5938.0
+4 2025-07-07 09:27:00+05:30  3590.9  3592.7  3586.7  3589.1   3792.0
+2025-08-06 18:30:09,004 - main - INFO - Total rows: 2875
+2025-08-06 18:30:09,452 - main - INFO - Backtest completed for LT: 18 trades, win_rate=16.67%
+2025-08-06 18:30:09,452 - main - INFO - Running backtest for HCLTECH...
+2025-08-06 18:30:09,863 - dhan_client - INFO - DEBUG CALL >>> 7229 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:30:11,315 - main - INFO - Received DataFrame for HCLTECH:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1716.8  1716.8  1712.5  1714.4  11087.0
+1 2025-07-07 09:18:00+05:30  1713.5  1716.8  1712.2  1714.7  14387.0
+2 2025-07-07 09:21:00+05:30  1715.3  1717.7  1712.0  1712.9  14467.0
+3 2025-07-07 09:24:00+05:30  1713.0  1713.0  1708.5  1708.5  24777.0
+4 2025-07-07 09:27:00+05:30  1708.6  1710.4  1705.0  1705.3  23642.0
+2025-08-06 18:30:11,316 - main - INFO - Total rows: 2875
+2025-08-06 18:30:11,772 - main - INFO - Backtest completed for HCLTECH: 19 trades, win_rate=5.26%
+2025-08-06 18:35:24,702 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 18:35:37,529 - main - INFO - Running backtest for RELIANCE...
+2025-08-06 18:35:37,975 - dhan_client - WARNING - Security ID not found for RELIANCE
+2025-08-06 18:35:37,976 - main - INFO - Running backtest for TCS...
+2025-08-06 18:35:38,399 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:41,422 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3415.0  3415.2  3411.0  3412.2  13249.0
+1 2025-07-07 09:18:00+05:30  3412.0  3419.0  3411.6  3417.8  22060.0
+2 2025-07-07 09:21:00+05:30  3416.7  3420.6  3415.4  3416.2  17785.0
+3 2025-07-07 09:24:00+05:30  3416.1  3418.2  3411.0  3412.1  13890.0
+4 2025-07-07 09:27:00+05:30  3411.1  3414.4  3408.4  3413.3  11907.0
+2025-08-06 18:35:41,423 - main - INFO - Total rows: 2875
+2025-08-06 18:35:41,967 - main - INFO - Backtest completed for TCS: 16 trades, win_rate=12.5%
+2025-08-06 18:35:41,968 - main - INFO - Running backtest for INFY...
+2025-08-06 18:35:42,413 - dhan_client - INFO - DEBUG CALL >>> 1594 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:43,212 - main - INFO - Received DataFrame for INFY:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1637.4  1638.1  1633.3  1636.9  34801.0
+1 2025-07-07 09:18:00+05:30  1637.6  1642.3  1636.4  1640.7  40054.0
+2 2025-07-07 09:21:00+05:30  1640.6  1641.0  1636.8  1637.2  32923.0
+3 2025-07-07 09:24:00+05:30  1636.8  1638.0  1635.0  1635.0  23190.0
+4 2025-07-07 09:27:00+05:30  1634.8  1635.3  1634.0  1634.9  20866.0
+2025-08-06 18:35:43,213 - main - INFO - Total rows: 2875
+2025-08-06 18:35:43,657 - main - INFO - Backtest completed for INFY: 17 trades, win_rate=29.41%
+2025-08-06 18:35:43,657 - main - INFO - Running backtest for HDFC...
+2025-08-06 18:35:44,141 - dhan_client - WARNING - Using fallback match for symbol: HDFC
+2025-08-06 18:35:44,143 - dhan_client - INFO - DEBUG CALL >>> 10619 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:45,185 - main - INFO - Received DataFrame for HDFC:
+                  timestamp   open   high    low  close  volume
+0 2025-07-07 09:15:00+05:30  69.41  69.41  69.15  69.15  1000.0
+1 2025-07-07 09:18:00+05:30  69.49  69.50  69.45  69.50   153.0
+2 2025-07-07 09:21:00+05:30  69.50  69.72  69.50  69.71   862.0
+3 2025-07-07 09:24:00+05:30  69.57  69.67  69.57  69.60    50.0
+4 2025-07-07 09:27:00+05:30  69.41  69.63  69.41  69.63    13.0
+2025-08-06 18:35:45,185 - main - INFO - Total rows: 2875
+2025-08-06 18:35:45,745 - main - INFO - Backtest completed for HDFC: 19 trades, win_rate=26.32%
+2025-08-06 18:35:45,746 - main - INFO - Running backtest for ITC...
+2025-08-06 18:35:46,192 - dhan_client - INFO - DEBUG CALL >>> 1660 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:46,943 - main - INFO - Received DataFrame for ITC:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  412.15  413.10  412.10  412.85  58748.0
+1 2025-07-07 09:18:00+05:30  412.80  413.25  412.60  413.00  65363.0
+2 2025-07-07 09:21:00+05:30  413.00  413.05  412.55  412.80  68791.0
+3 2025-07-07 09:24:00+05:30  412.80  413.40  412.65  413.35  77032.0
+4 2025-07-07 09:27:00+05:30  413.35  413.55  413.15  413.40  33721.0
+2025-08-06 18:35:46,944 - main - INFO - Total rows: 2875
+2025-08-06 18:35:47,488 - main - INFO - Backtest completed for ITC: 17 trades, win_rate=17.65%
+2025-08-06 18:35:47,489 - main - INFO - Running backtest for ICICIBANK...
+2025-08-06 18:35:47,998 - dhan_client - INFO - DEBUG CALL >>> 4963 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:48,666 - main - INFO - Received DataFrame for ICICIBANK:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1436.2  1436.8  1434.5  1436.1  65932.0
+1 2025-07-07 09:18:00+05:30  1435.9  1436.5  1433.3  1435.8  53911.0
+2 2025-07-07 09:21:00+05:30  1435.8  1436.8  1434.2  1434.3  44980.0
+3 2025-07-07 09:24:00+05:30  1434.5  1434.5  1433.5  1434.2  40818.0
+4 2025-07-07 09:27:00+05:30  1433.8  1434.1  1432.8  1433.1  21040.0
+2025-08-06 18:35:48,667 - main - INFO - Total rows: 2875
+2025-08-06 18:35:49,260 - main - INFO - Backtest completed for ICICIBANK: 19 trades, win_rate=31.58%
+2025-08-06 18:35:49,261 - main - INFO - Running backtest for BHARTIARTL...
+2025-08-06 18:35:49,704 - dhan_client - INFO - DEBUG CALL >>> 10604 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:50,377 - main - INFO - Received DataFrame for BHARTIARTL:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  2023.8  2024.5  2019.6  2021.7  35532.0
+1 2025-07-07 09:18:00+05:30  2021.4  2023.8  2017.2  2020.9  34592.0
+2 2025-07-07 09:21:00+05:30  2020.9  2021.7  2018.0  2021.7  30710.0
+3 2025-07-07 09:24:00+05:30  2021.7  2027.6  2021.7  2027.1  68810.0
+4 2025-07-07 09:27:00+05:30  2026.7  2026.7  2023.3  2024.5  42744.0
+2025-08-06 18:35:50,378 - main - INFO - Total rows: 2875
+2025-08-06 18:35:50,960 - main - INFO - Backtest completed for BHARTIARTL: 17 trades, win_rate=17.65%
+2025-08-06 18:35:50,961 - main - INFO - Running backtest for SBIN...
+2025-08-06 18:35:51,391 - dhan_client - INFO - DEBUG CALL >>> 3045 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:52,153 - main - INFO - Received DataFrame for SBIN:
+                  timestamp    open    high     low  close   volume
+0 2025-07-07 09:15:00+05:30  808.50  808.50  807.05  807.7  72676.0
+1 2025-07-07 09:18:00+05:30  807.75  808.80  807.20  808.5  37492.0
+2 2025-07-07 09:21:00+05:30  808.75  809.85  808.50  809.0  67187.0
+3 2025-07-07 09:24:00+05:30  809.05  809.20  807.80  808.4  45906.0
+4 2025-07-07 09:27:00+05:30  808.40  808.70  807.70  807.7  29593.0
+2025-08-06 18:35:52,154 - main - INFO - Total rows: 2875
+2025-08-06 18:35:52,674 - main - INFO - Backtest completed for SBIN: 18 trades, win_rate=16.67%
+2025-08-06 18:35:52,674 - main - INFO - Running backtest for LT...
+2025-08-06 18:35:53,201 - dhan_client - INFO - DEBUG CALL >>> 11483 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:53,839 - main - INFO - Received DataFrame for LT:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3586.8  3589.4  3585.0  3589.0   3289.0
+1 2025-07-07 09:18:00+05:30  3588.5  3589.2  3580.0  3588.8   6045.0
+2 2025-07-07 09:21:00+05:30  3588.7  3596.7  3588.0  3593.8  13314.0
+3 2025-07-07 09:24:00+05:30  3593.8  3596.1  3587.5  3590.9   5938.0
+4 2025-07-07 09:27:00+05:30  3590.9  3592.7  3586.7  3589.1   3792.0
+2025-08-06 18:35:53,840 - main - INFO - Total rows: 2875
+2025-08-06 18:35:54,434 - main - INFO - Backtest completed for LT: 18 trades, win_rate=16.67%
+2025-08-06 18:35:54,434 - main - INFO - Running backtest for HCLTECH...
+2025-08-06 18:35:54,867 - dhan_client - INFO - DEBUG CALL >>> 7229 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 18:35:55,480 - main - INFO - Received DataFrame for HCLTECH:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  1716.8  1716.8  1712.5  1714.4  11087.0
+1 2025-07-07 09:18:00+05:30  1713.5  1716.8  1712.2  1714.7  14387.0
+2 2025-07-07 09:21:00+05:30  1715.3  1717.7  1712.0  1712.9  14467.0
+3 2025-07-07 09:24:00+05:30  1713.0  1713.0  1708.5  1708.5  24777.0
+4 2025-07-07 09:27:00+05:30  1708.6  1710.4  1705.0  1705.3  23642.0
+2025-08-06 18:35:55,481 - main - INFO - Total rows: 2875
+2025-08-06 18:35:55,983 - main - INFO - Backtest completed for HCLTECH: 19 trades, win_rate=5.26%
+2025-08-06 18:54:45,114 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 18:55:30,451 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 18:55:53,583 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 18:57:10,582 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:01:46,462 - main - INFO - Running backtest for RELIANCE...
+2025-08-06 19:01:47,009 - dhan_client - WARNING - Security ID not found for RELIANCE
+2025-08-06 19:01:47,010 - main - INFO - Running backtest for TCS...
+2025-08-06 19:01:47,522 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:01:48,929 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3415.0  3415.2  3411.0  3412.2  13249.0
+1 2025-07-07 09:18:00+05:30  3412.0  3419.0  3411.6  3417.8  22060.0
+2 2025-07-07 09:21:00+05:30  3416.7  3420.6  3415.4  3416.2  17785.0
+3 2025-07-07 09:24:00+05:30  3416.1  3418.2  3411.0  3412.1  13890.0
+4 2025-07-07 09:27:00+05:30  3411.1  3414.4  3408.4  3413.3  11907.0
+2025-08-06 19:01:48,929 - main - INFO - Total rows: 2875
+2025-08-06 19:01:48,957 - main - ERROR - Error running backtest: 'BacktestEngine' object has no attribute '_resample_to_3min'
+2025-08-06 19:03:21,562 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:08:13,067 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:08:16,973 - main - INFO - Running backtest for TCS...
+2025-08-06 19:08:17,496 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:08:19,805 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3415.0  3415.2  3411.0  3412.2  13249.0
+1 2025-07-07 09:18:00+05:30  3412.0  3419.0  3411.6  3417.8  22060.0
+2 2025-07-07 09:21:00+05:30  3416.7  3420.6  3415.4  3416.2  17785.0
+3 2025-07-07 09:24:00+05:30  3416.1  3418.2  3411.0  3412.1  13890.0
+4 2025-07-07 09:27:00+05:30  3411.1  3414.4  3408.4  3413.3  11907.0
+2025-08-06 19:08:19,806 - main - INFO - Total rows: 2875
+2025-08-06 19:08:19,833 - main - ERROR - Error running backtest: 'BacktestEngine' object has no attribute '_resample_to_3min'
+2025-08-06 19:15:58,227 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:16:09,542 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:16:17,971 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:16:21,843 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:16:27,771 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:16:31,342 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:16:31,521 - main - INFO - Running backtest for TCS...
+2025-08-06 19:16:31,948 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:16:35,601 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-07 09:15:00+05:30  3415.0  3415.2  3411.0  3412.2  13249.0
+1 2025-07-07 09:18:00+05:30  3412.0  3419.0  3411.6  3417.8  22060.0
+2 2025-07-07 09:21:00+05:30  3416.7  3420.6  3415.4  3416.2  17785.0
+3 2025-07-07 09:24:00+05:30  3416.1  3418.2  3411.0  3412.1  13890.0
+4 2025-07-07 09:27:00+05:30  3411.1  3414.4  3408.4  3413.3  11907.0
+2025-08-06 19:16:35,602 - main - INFO - Total rows: 2875
+2025-08-06 19:16:35,954 - main - INFO - Backtest completed for TCS: 16 trades, win_rate=12.5%
+2025-08-06 19:16:50,985 - main - INFO - Running backtest for HDFC...
+2025-08-06 19:16:51,484 - dhan_client - WARNING - Using fallback match for symbol: HDFC
+2025-08-06 19:16:51,487 - dhan_client - INFO - DEBUG CALL >>> 10619 NSE_EQ EQUITY 1 2025-07-07 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:16:52,196 - main - INFO - Received DataFrame for HDFC:
+                  timestamp   open   high    low  close  volume
+0 2025-07-07 09:15:00+05:30  69.41  69.41  69.15  69.15  1000.0
+1 2025-07-07 09:18:00+05:30  69.49  69.50  69.45  69.50   153.0
+2 2025-07-07 09:21:00+05:30  69.50  69.72  69.50  69.71   862.0
+3 2025-07-07 09:24:00+05:30  69.57  69.67  69.57  69.60    50.0
+4 2025-07-07 09:27:00+05:30  69.41  69.63  69.41  69.63    13.0
+2025-08-06 19:16:52,197 - main - INFO - Total rows: 2875
+2025-08-06 19:16:52,967 - main - INFO - Backtest completed for HDFC: 19 trades, win_rate=26.32%
+2025-08-06 19:19:41,887 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:21:03,409 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:26:54,353 - main - INFO - Running backtest for RELIANCE...
+2025-08-06 19:26:54,878 - dhan_client - WARNING - Security ID not found for RELIANCE
+2025-08-06 19:26:54,879 - main - INFO - Running backtest for TCS...
+2025-08-06 19:26:55,383 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:26:56,814 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-08-04 09:15:00+05:30  3004.5  3009.0  3001.3  3008.0  26387.0
+1 2025-08-04 09:18:00+05:30  3009.0  3010.2  3000.2  3000.6  25024.0
+2 2025-08-04 09:21:00+05:30  3000.6  3002.5  2996.0  3002.5  21332.0
+3 2025-08-04 09:24:00+05:30  3002.9  3005.9  3001.4  3003.9  27169.0
+4 2025-08-04 09:27:00+05:30  3004.0  3006.0  3003.4  3005.8  18562.0
+2025-08-06 19:26:56,815 - main - INFO - Total rows: 375
+2025-08-06 19:26:56,946 - main - INFO - Backtest completed for TCS: 2 trades, win_rate=0.0%
+2025-08-06 19:26:56,947 - main - INFO - Running backtest for INFY...
+2025-08-06 19:26:57,388 - dhan_client - INFO - DEBUG CALL >>> 1594 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:26:58,330 - main - INFO - Received DataFrame for INFY:
+                  timestamp    open    high     low   close    volume
+0 2025-08-04 09:15:00+05:30  1458.1  1463.6  1457.4  1463.2  121252.0
+1 2025-08-04 09:18:00+05:30  1463.2  1463.8  1455.1  1455.1  121323.0
+2 2025-08-04 09:21:00+05:30  1455.4  1462.2  1455.3  1462.2   60639.0
+3 2025-08-04 09:24:00+05:30  1461.7  1463.6  1460.8  1461.8   68397.0
+4 2025-08-04 09:27:00+05:30  1462.1  1464.7  1461.9  1464.6   90293.0
+2025-08-06 19:26:58,330 - main - INFO - Total rows: 375
+2025-08-06 19:26:58,428 - main - INFO - Backtest completed for INFY: 1 trades, win_rate=0.0%
+2025-08-06 19:26:58,429 - main - INFO - Running backtest for HDFC...
+2025-08-06 19:26:58,860 - dhan_client - WARNING - Using fallback match for symbol: HDFC
+2025-08-06 19:26:58,861 - dhan_client - INFO - DEBUG CALL >>> 10619 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:26:59,037 - main - INFO - Received DataFrame for HDFC:
+                  timestamp   open   high    low  close  volume
+0 2025-08-04 09:15:00+05:30  67.36  67.48  67.36  67.48    15.0
+1 2025-08-04 09:18:00+05:30  67.47  67.47  67.36  67.36    21.0
+2 2025-08-04 09:21:00+05:30  67.36  67.67  67.36  67.50   402.0
+3 2025-08-04 09:24:00+05:30  67.50  67.59  67.47  67.59   428.0
+4 2025-08-04 09:27:00+05:30  67.62  67.62  67.62  67.62    43.0
+2025-08-06 19:26:59,038 - main - INFO - Total rows: 375
+2025-08-06 19:26:59,138 - main - INFO - Backtest completed for HDFC: 1 trades, win_rate=0.0%
+2025-08-06 19:26:59,140 - main - INFO - Running backtest for ITC...
+2025-08-06 19:26:59,568 - dhan_client - INFO - DEBUG CALL >>> 1660 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:26:59,788 - main - INFO - Received DataFrame for ITC:
+                  timestamp    open   high     low   close    volume
+0 2025-08-04 09:15:00+05:30  419.10  419.4  415.30  415.85  418768.0
+1 2025-08-04 09:18:00+05:30  415.85  418.9  415.10  418.30  740170.0
+2 2025-08-04 09:21:00+05:30  418.30  419.6  417.85  419.20  473291.0
+3 2025-08-04 09:24:00+05:30  419.20  419.7  418.60  418.65  164623.0
+4 2025-08-04 09:27:00+05:30  418.65  419.8  418.65  419.35  117382.0
+2025-08-06 19:26:59,789 - main - INFO - Total rows: 375
+2025-08-06 19:26:59,873 - main - INFO - Backtest completed for ITC: 2 trades, win_rate=0.0%
+2025-08-06 19:26:59,873 - main - INFO - Running backtest for ICICIBANK...
+2025-08-06 19:27:00,343 - dhan_client - INFO - DEBUG CALL >>> 4963 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:27:00,543 - main - INFO - Received DataFrame for ICICIBANK:
+                  timestamp    open    high     low   close   volume
+0 2025-08-04 09:15:00+05:30  1472.5  1472.5  1469.0  1470.2  88015.0
+1 2025-08-04 09:18:00+05:30  1470.1  1471.7  1469.3  1470.2  54042.0
+2 2025-08-04 09:21:00+05:30  1470.1  1471.9  1470.0  1471.1  35796.0
+3 2025-08-04 09:24:00+05:30  1471.4  1471.4  1470.0  1470.3  21802.0
+4 2025-08-04 09:27:00+05:30  1470.1  1470.8  1470.1  1470.6  24030.0
+2025-08-06 19:27:00,544 - main - INFO - Total rows: 375
+2025-08-06 19:27:00,630 - main - INFO - Backtest completed for ICICIBANK: 2 trades, win_rate=50.0%
+2025-08-06 19:27:00,631 - main - INFO - Running backtest for BHARTIARTL...
+2025-08-06 19:27:01,065 - dhan_client - INFO - DEBUG CALL >>> 10604 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:27:01,237 - main - INFO - Received DataFrame for BHARTIARTL:
+                  timestamp    open    high     low   close   volume
+0 2025-08-04 09:15:00+05:30  1891.8  1893.1  1885.2  1886.4  27729.0
+1 2025-08-04 09:18:00+05:30  1885.5  1894.2  1885.2  1893.2  18782.0
+2 2025-08-04 09:21:00+05:30  1893.6  1893.6  1889.1  1890.6  16390.0
+3 2025-08-04 09:24:00+05:30  1890.0  1890.9  1887.0  1888.0  11220.0
+4 2025-08-04 09:27:00+05:30  1888.0  1890.0  1887.7  1890.0   8106.0
+2025-08-06 19:27:01,237 - main - INFO - Total rows: 375
+2025-08-06 19:27:01,315 - main - INFO - Backtest completed for BHARTIARTL: 2 trades, win_rate=0.0%
+2025-08-06 19:27:01,316 - main - INFO - Running backtest for SBIN...
+2025-08-06 19:27:01,739 - dhan_client - INFO - DEBUG CALL >>> 3045 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:27:01,960 - main - INFO - Received DataFrame for SBIN:
+                  timestamp    open    high     low   close    volume
+0 2025-08-04 09:15:00+05:30  794.90  797.20  794.25  795.35   98904.0
+1 2025-08-04 09:18:00+05:30  795.75  795.90  793.45  793.70  100327.0
+2 2025-08-04 09:21:00+05:30  793.65  794.80  792.95  793.10  126920.0
+3 2025-08-04 09:24:00+05:30  793.30  794.60  793.10  793.70   98255.0
+4 2025-08-04 09:27:00+05:30  793.95  794.55  793.60  794.40   62617.0
+2025-08-06 19:27:01,961 - main - INFO - Total rows: 375
+2025-08-06 19:27:02,041 - main - INFO - Backtest completed for SBIN: 2 trades, win_rate=0.0%
+2025-08-06 19:27:02,041 - main - INFO - Running backtest for LT...
+2025-08-06 19:27:02,461 - dhan_client - INFO - DEBUG CALL >>> 11483 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:27:02,716 - main - INFO - Received DataFrame for LT:
+                  timestamp    open    high     low   close   volume
+0 2025-08-04 09:15:00+05:30  3596.8  3596.8  3589.7  3591.7  23689.0
+1 2025-08-04 09:18:00+05:30  3591.9  3596.9  3589.6  3591.5  10467.0
+2 2025-08-04 09:21:00+05:30  3591.5  3594.5  3590.5  3594.4   5438.0
+3 2025-08-04 09:24:00+05:30  3594.4  3597.3  3592.5  3596.0   7278.0
+4 2025-08-04 09:27:00+05:30  3595.6  3598.9  3595.0  3598.9   7947.0
+2025-08-06 19:27:02,717 - main - INFO - Total rows: 375
+2025-08-06 19:27:02,816 - main - INFO - Backtest completed for LT: 2 trades, win_rate=0.0%
+2025-08-06 19:27:02,817 - main - INFO - Running backtest for HCLTECH...
+2025-08-06 19:27:03,264 - dhan_client - INFO - DEBUG CALL >>> 7229 NSE_EQ EQUITY 1 2025-08-04 09:15:00 2025-08-06 15:30:00
+2025-08-06 19:27:03,457 - main - INFO - Received DataFrame for HCLTECH:
+                  timestamp    open    high     low   close   volume
+0 2025-08-04 09:15:00+05:30  1446.8  1448.7  1443.9  1448.1  41000.0
+1 2025-08-04 09:18:00+05:30  1448.1  1449.5  1445.1  1445.3  25654.0
+2 2025-08-04 09:21:00+05:30  1445.3  1447.6  1444.7  1447.5  29950.0
+3 2025-08-04 09:24:00+05:30  1448.0  1448.3  1446.6  1447.4  19041.0
+4 2025-08-04 09:27:00+05:30  1447.4  1448.9  1447.0  1448.8  15448.0
+2025-08-06 19:27:03,460 - main - INFO - Total rows: 375
+2025-08-06 19:27:03,551 - main - INFO - Backtest completed for HCLTECH: 2 trades, win_rate=0.0%
+2025-08-06 19:31:21,788 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:32:07,127 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:32:11,483 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:32:15,583 - dhan_client - INFO - Loading existing Security Master...
+2025-08-06 19:32:39,592 - dhan_client - INFO - Loading existing Security Master...

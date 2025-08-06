@@ -18,6 +18,46 @@ class DhanClient:
     # =======================================================
     # Security Master Loader
     # =======================================================
+    def _resample_to_3min(self, df_1min: pd.DataFrame) -> pd.DataFrame:
+        """Convert 1-minute data to 3-minute candles"""
+
+        if df_1min.empty:
+            return df_1min
+
+        print("[DEBUG] Raw data before resample:", df_1min.head(10))
+        print(f"[DEBUG] Raw row count: {len(df_1min)}")
+        
+        # Convert to datetime and filter out bad timestamps
+        df_1min['timestamp'] = pd.to_datetime(df_1min['timestamp'],  utc=True)
+        df_1min['timestamp'] = df_1min['timestamp'].dt.tz_convert('Asia/Kolkata')
+        print(f"[DEBUG] Parsed timestamps: {df_1min['timestamp'].head(10)}")
+        # Remove timestamps before year 2000 (optional cutoff)
+        df_1min = df_1min[df_1min['timestamp'] >= pd.Timestamp('2000-01-01').tz_localize('UTC')]
+
+
+        # Check again after filtering
+        if df_1min.empty:
+            logger.warning("Filtered data is empty after removing bad timestamps.")
+            return pd.DataFrame()
+
+        df_1min = df_1min.set_index('timestamp')
+
+        # Resample to 3-minute candles
+        df_3min = df_1min.resample('3min').agg({
+            'open': 'first',
+            'high': 'max',
+            'low': 'min',
+            'close': 'last',
+            'volume': 'sum'
+        }).dropna()
+
+        if df_3min is None or df_3min.empty:
+            logger.warning(f"No data after resampling.")
+            return pd.DataFrame()  # Explicitly return empty DataFrame
+        print(18)
+        dm= df_3min.reset_index()
+        return dm._resample_to_3min(df_1min)
+
     def _load_security_master(self) -> pd.DataFrame:
         """Load or fetch Dhan Security Master for NSE Equity"""
         if not os.path.exists(self.security_master_file):
