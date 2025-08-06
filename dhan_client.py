@@ -182,6 +182,7 @@ class DhanClient:
         
         # Convert to datetime and filter out bad timestamps
         df_1min['timestamp'] = pd.to_datetime(df_1min['timestamp'],  utc=True)
+        df_1min['timestamp'] = df_1min['timestamp'].dt.tz_convert('Asia/Kolkata')
         print(f"[DEBUG] Parsed timestamps: {df_1min['timestamp'].head(10)}")
         # Remove timestamps before year 2000 (optional cutoff)
         df_1min = df_1min[df_1min['timestamp'] >= pd.Timestamp('2000-01-01').tz_localize('UTC')]
