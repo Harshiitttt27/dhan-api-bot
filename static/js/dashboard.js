@@ -46,7 +46,8 @@ async function runBacktest() {
 function displayBacktestResults(results) {
     const container = document.getElementById('backtestResults');
     let html = '<div class="performance-grid">';
-    
+    let tradesHtml = '';
+
     for (const [symbol, result] of Object.entries(results)) {
         if (result.error) {
             html += `
@@ -55,29 +56,56 @@ function displayBacktestResults(results) {
                     <div class="metric-label">${result.error}</div>
                 </div>
             `;
-        } else {
-            const winRate = result.win_rate || Math.round(
-                (result.winning_trades / result.total_trades) * 100
-            ) || 0;
-            const winRateColor = winRate >= 50 ? 'positive' : 'negative';
-            const pnlColor = result.total_pnl >= 0 ? 'positive' : 'negative';
-            
-            html += `
-                <div class="metric-card">
-                    <div class="metric-value">${symbol}</div>
-                    <div class="metric-label">
-                        Trades: ${result.total_trades}<br>
-                        Win Rate: <span class="${winRateColor}">${winRate}%</span><br>
-                        P&L: <span class="${pnlColor}">₹${result.total_pnl?.toFixed(2) || 0}</span>
-                    </div>
+            continue;
+        }
+
+        // Calculate win rate safely
+        const winRate = result.win_rate !== undefined 
+            ? Math.round(result.win_rate) 
+            : Math.round((result.winning_trades / (result.total_trades || 1)) * 100);
+
+        const winRateColor = winRate >= 50 ? 'positive' : 'negative';
+        const pnlColor = result.total_pnl >= 0 ? 'positive' : 'negative';
+
+        // Add summary card
+        html += `
+            <div class="metric-card">
+                <div class="metric-value">${symbol}</div>
+                <div class="metric-label">
+                    Trades: ${result.total_trades}<br>
+                    Win Rate: <span class="${winRateColor}">${winRate}%</span><br>
+                    P&L: <span class="${pnlColor}">₹${result.total_pnl?.toFixed(2) || 0}</span>
                 </div>
-            `;
+            </div>
+        `;
+
+        // Populate Trade History tab
+        if (result.trades && result.trades.length > 0) {
+            result.trades.forEach(trade => {
+                const pnlClass = trade.pnl >= 0 ? 'positive' : 'negative';
+                tradesHtml += `
+                    <tr>
+                        <td>${trade.symbol}</td>
+                        <td>${trade.signal}</td>
+                        <td>₹${trade.entry_price.toFixed(2)}</td>
+                        <td>₹${trade.exit_price.toFixed(2)}</td>
+                        <td class="${pnlClass}">₹${trade.pnl.toFixed(2)}</td>
+                        <td>${trade.exit_reason || ''}</td>
+                    </tr>
+                `;
+            });
         }
     }
-    
+
     html += '</div>';
     container.innerHTML = html;
+
+    // Update Trade History tab with latest trades
+    document.getElementById('tradesBody').innerHTML = tradesHtml || `
+        <tr><td colspan="6" style="text-align:center;">No trades executed</td></tr>
+    `;
 }
+
 
 
 // Strategy performance
