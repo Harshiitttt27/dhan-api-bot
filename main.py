@@ -183,7 +183,20 @@ async def run_backtest(symbol: Optional[str] = None, days: int = 30):
                 results[sym] = {'error': f'Security ID not found for {sym}'}
                 continue
             
+
             df_3min = dhan_client.get_historical_data(security_id, days)
+            logger.info(f"Received DataFrame for {symbol}:")
+            logger.info(df_3min.head())
+            if df_3min is None:
+                 logger.error("DataFrame is None — likely due to data fetch failure.")
+                 return JsonResponse({symbol: {"error": "No data returned from API"}})
+            elif df_3min.empty:
+                 logger.warning("DataFrame is empty.")
+                 return JsonResponse({symbol: {"error": "Empty data returned from API"}})
+            else:
+                 logger.info(df_3min.head())
+                 logger.info(f"Total rows: {len(df_3min)}")
+
             if df_3min is None or len(df_3min) < 100:
                 results[sym] = {'error': 'Insufficient data for analysis'}
                 continue
@@ -239,4 +252,4 @@ async def get_watchlist():
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=5000, log_level="info")
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")

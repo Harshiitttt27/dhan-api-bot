@@ -201,7 +201,16 @@ class BacktestEngine:
         self.performance_metrics = {}
     
     def run_backtest(self, df: pd.DataFrame, symbol: str) -> Dict:
+        print(df)
         """Run backtest on historical data"""
+        print(f"✅ Loading data for symbol: {symbol}")
+        print(f"✅ Loaded {len(df)} rows before filtering.")
+        print(f"✅ Dates: {df['timestamp'].min()} to {df['timestamp'].max()}")
+
+# After applying date filter:
+        # print(f"✅ Filtered rows (after {days} days): {len(df_filtered)}")
+        # print(f"✅ Filtered dates: {df_filtered['timestamp'].min()} to {df_filtered['timestamp'].max()}")
+
         if df is None or df.empty:
             return {'error': 'No data provided for backtest'}
             

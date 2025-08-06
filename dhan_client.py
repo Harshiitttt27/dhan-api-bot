@@ -63,23 +63,38 @@ class DhanClient:
     # Security ID Lookup
     # =======================================================
     def get_security_id(self, symbol: str) -> Optional[str]:
-        """Fetch security ID for a given symbol"""
+        """Fetch equity security ID for a given symbol (e.g., HDFC)"""
         symbol = symbol.strip().upper()
+        
         if self.security_master_df is None or self.security_master_df.empty:
             logger.warning("Security master is empty.")
+            print("DEBUG: Security master is empty or not loaded.")
             return None
 
-        # Exact match
-        row = self.security_master_df[self.security_master_df['symbol'] == symbol]
+        # Filter for equity only: exclude derivatives
+        equity_df = self.security_master_df[
+            self.security_master_df['symbol'].str.startswith(symbol) &
+            (~self.security_master_df['symbol'].str.contains(
+                r'FUT|CE|PE|CALL|PUT|OPT|AUG|JAN|FEB|MAR|APR|MAY|JUN|JUL|SEP|OCT|NOV|DEC',
+                case=False, na=False))
+        ]
+        print(f"DEBUG: Filtered equity_df for symbol '{symbol}': {equity_df.shape[0]} rows")
+
+        # Exact match if exists
+        row = equity_df[equity_df['symbol'] == symbol]
         if not row.empty:
+            print(f"DEBUG: Exact match found for symbol '{symbol}'")
             return str(row.iloc[0]['security_id'])
 
-        # Fallback: substring match
-        row = self.security_master_df[self.security_master_df['symbol'].str.contains(symbol)]
-        if not row.empty:
-            return str(row.iloc[0]['security_id'])
+        # Fallback: first close match
+        if not equity_df.empty:
+            logger.warning(f"Using fallback match for symbol: {symbol}")
+            print(f"DEBUG: Fallback match used for symbol '{symbol}'")
+            print(equity_df.iloc[0]['security_id'])
+            return str(equity_df.iloc[0]['security_id'])
 
         logger.warning(f"Security ID not found for {symbol}")
+        print(f"DEBUG: No match found for symbol '{symbol}'")
         return None
 
     # =======================================================
@@ -122,19 +137,33 @@ class DhanClient:
                 }
                 df.rename(columns=rename_map, inplace=True)
 
-                # Ensure timestamp column exists
                 if 'timestamp' not in df.columns:
                     raise KeyError("No timestamp column detected in API response")
 
-                df['timestamp'] = pd.to_datetime(df['timestamp'])
+                # === Robust timestamp parsing ===
+                try:
+                    sample_ts = df['timestamp'].iloc[0]
+
+                    if isinstance(sample_ts, (int, float)):
+                        if sample_ts > 1e12:
+                            df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms', utc=True)
+                        else:
+                            df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s', utc=True)
+                    else:
+                        df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce', utc=True)
+                except Exception as e:
+                    logger.error(f"[TimestampParseError] Could not parse timestamps: {e}")
+                    return None
+
                 df = df.sort_values('timestamp')
                 df = df[['timestamp', 'open', 'high', 'low', 'close', 'volume']]
 
                 # Convert 1-minute data to 3-minute candles
                 return self._resample_to_3min(df)
-            
+
             logger.warning(f"No data returned for security ID {security_id}")
             return None
+
         except Exception as e:
             logger.error(f"Error fetching historical data: {e}")
             return None
@@ -144,10 +173,28 @@ class DhanClient:
     # =======================================================
     def _resample_to_3min(self, df_1min: pd.DataFrame) -> pd.DataFrame:
         """Convert 1-minute data to 3-minute candles"""
+
         if df_1min.empty:
             return df_1min
 
+        print("[DEBUG] Raw data before resample:", df_1min.head(10))
+        print(f"[DEBUG] Raw row count: {len(df_1min)}")
+        
+        # Convert to datetime and filter out bad timestamps
+        df_1min['timestamp'] = pd.to_datetime(df_1min['timestamp'],  utc=True)
+        print(f"[DEBUG] Parsed timestamps: {df_1min['timestamp'].head(10)}")
+        # Remove timestamps before year 2000 (optional cutoff)
+        df_1min = df_1min[df_1min['timestamp'] >= pd.Timestamp('2000-01-01').tz_localize('UTC')]
+
+
+        # Check again after filtering
+        if df_1min.empty:
+            logger.warning("Filtered data is empty after removing bad timestamps.")
+            return pd.DataFrame()
+
         df_1min = df_1min.set_index('timestamp')
+
+        # Resample to 3-minute candles
         df_3min = df_1min.resample('3min').agg({
             'open': 'first',
             'high': 'max',
@@ -155,6 +202,10 @@ class DhanClient:
             'close': 'last',
             'volume': 'sum'
         }).dropna()
+
+        if df_3min is None or df_3min.empty:
+            logger.warning(f"No data after resampling.")
+            return pd.DataFrame()  # Explicitly return empty DataFrame
 
         return df_3min.reset_index()
 
