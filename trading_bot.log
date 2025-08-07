@@ -2115,3 +2115,117 @@
 4 2025-07-08 09:27:00+05:30  3414.0  3419.0  3413.0  3416.0  32980.0
 2025-08-07 14:28:07,153 - main - INFO - Total rows: 2855
 2025-08-07 14:28:08,027 - main - INFO - Backtest completed for TCS: 9 trades, win_rate=44.44%
+2025-08-07 17:40:15,717 - main - INFO - Running backtest for TCS...
+2025-08-07 17:40:16,425 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-08 09:15:00 2025-08-07 15:30:00
+2025-08-07 17:40:16,525 - root - ERROR - Exception in dhanhq>>intraday_minute_data: HTTPSConnectionPool(host='api.dhan.co', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000255B636C220>: Failed to resolve 'api.dhan.co' ([Errno 11001] getaddrinfo failed)"))
+2025-08-07 17:40:16,564 - dhan_client - WARNING - No data returned for security ID 11536
+2025-08-07 17:40:16,565 - main - ERROR - DataFrame is None — likely due to data fetch failure.
+2025-08-07 17:40:26,144 - main - INFO - Running backtest for TCS...
+2025-08-07 17:40:26,623 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-09 09:15:00 2025-08-07 15:30:00
+2025-08-07 17:40:33,736 - root - ERROR - Exception in dhanhq>>intraday_minute_data: HTTPSConnectionPool(host='api.dhan.co', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000255B636C280>: Failed to resolve 'api.dhan.co' ([Errno 11001] getaddrinfo failed)"))
+2025-08-07 17:40:33,736 - dhan_client - WARNING - No data returned for security ID 11536
+2025-08-07 17:40:33,737 - main - ERROR - DataFrame is None — likely due to data fetch failure.
+2025-08-07 17:41:07,531 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 17:41:07,851 - main - INFO - Running backtest for TCS...
+2025-08-07 17:41:08,263 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-09 09:15:00 2025-08-07 15:30:00
+2025-08-07 17:41:08,283 - root - ERROR - Exception in dhanhq>>intraday_minute_data: HTTPSConnectionPool(host='api.dhan.co', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002547FC476A0>: Failed to resolve 'api.dhan.co' ([Errno 11001] getaddrinfo failed)"))
+2025-08-07 17:41:08,284 - dhan_client - WARNING - No data returned for security ID 11536
+2025-08-07 17:41:08,285 - main - ERROR - DataFrame is None — likely due to data fetch failure.
+2025-08-07 17:42:18,918 - main - INFO - Running backtest for TCS...
+2025-08-07 17:42:19,497 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-09 09:15:00 2025-08-07 15:30:00
+2025-08-07 17:42:23,524 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-09 09:15:00+05:30  3407.1  3407.1  3400.2  3404.8  24087.0
+1 2025-07-09 09:18:00+05:30  3404.8  3408.0  3402.0  3403.0  23585.0
+2 2025-07-09 09:21:00+05:30  3404.1  3408.7  3400.9  3403.1  18163.0
+3 2025-07-09 09:24:00+05:30  3403.1  3406.3  3402.0  3404.0  12822.0
+4 2025-07-09 09:27:00+05:30  3404.1  3405.6  3402.0  3402.3  12898.0
+2025-08-07 17:42:23,525 - main - INFO - Total rows: 2750
+2025-08-07 17:42:24,132 - main - INFO - Backtest completed for TCS: 9 trades, win_rate=44.44%
+2025-08-07 17:47:42,638 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 17:47:48,627 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 17:48:49,683 - main - INFO - Running backtest for TCS...
+2025-08-07 17:48:50,265 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-09 09:15:00 2025-08-07 15:30:00
+2025-08-07 17:48:51,765 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-09 09:15:00+05:30  3407.1  3407.1  3400.2  3404.8  24087.0
+1 2025-07-09 09:18:00+05:30  3404.8  3408.0  3402.0  3403.0  23585.0
+2 2025-07-09 09:21:00+05:30  3404.1  3408.7  3400.9  3403.1  18163.0
+3 2025-07-09 09:24:00+05:30  3403.1  3406.3  3402.0  3404.0  12822.0
+4 2025-07-09 09:27:00+05:30  3404.1  3405.6  3402.0  3402.3  12898.0
+2025-08-07 17:48:51,767 - main - INFO - Total rows: 2750
+2025-08-07 17:48:51,784 - main - ERROR - Error running backtest: 'sma_50'
+2025-08-07 18:01:03,142 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:01:11,283 - main - INFO - Running backtest for TCS...
+2025-08-07 18:01:11,798 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-08 09:15:00 2025-08-07 15:30:00
+2025-08-07 18:01:14,498 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-08 09:15:00+05:30  3406.6  3409.6  3401.4  3407.2  23993.0
+1 2025-07-08 09:18:00+05:30  3407.8  3410.2  3403.5  3404.0  20986.0
+2 2025-07-08 09:21:00+05:30  3404.1  3409.9  3401.0  3409.5  25097.0
+3 2025-07-08 09:24:00+05:30  3409.5  3414.5  3409.1  3413.1  12643.0
+4 2025-07-08 09:27:00+05:30  3414.0  3419.0  3413.0  3416.0  32980.0
+2025-08-07 18:01:14,499 - main - INFO - Total rows: 2875
+2025-08-07 18:01:14,515 - main - ERROR - Error running backtest: 'sma_50'
+2025-08-07 18:01:27,517 - main - INFO - Running backtest for TCS...
+2025-08-07 18:01:27,962 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-08 09:15:00 2025-08-07 15:30:00
+2025-08-07 18:01:28,615 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-08 09:15:00+05:30  3406.6  3409.6  3401.4  3407.2  23993.0
+1 2025-07-08 09:18:00+05:30  3407.8  3410.2  3403.5  3404.0  20986.0
+2 2025-07-08 09:21:00+05:30  3404.1  3409.9  3401.0  3409.5  25097.0
+3 2025-07-08 09:24:00+05:30  3409.5  3414.5  3409.1  3413.1  12643.0
+4 2025-07-08 09:27:00+05:30  3414.0  3419.0  3413.0  3416.0  32980.0
+2025-08-07 18:01:28,616 - main - INFO - Total rows: 2875
+2025-08-07 18:01:28,625 - main - ERROR - Error running backtest: 'sma_50'
+2025-08-07 18:03:27,810 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:03:59,266 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:04:02,365 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:04:36,492 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:04:40,065 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:04:41,691 - main - INFO - Running backtest for TCS...
+2025-08-07 18:04:42,155 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-08 09:15:00 2025-08-07 15:30:00
+2025-08-07 18:04:43,464 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-08 09:15:00+05:30  3406.6  3409.6  3401.4  3407.2  23993.0
+1 2025-07-08 09:18:00+05:30  3407.8  3410.2  3403.5  3404.0  20986.0
+2 2025-07-08 09:21:00+05:30  3404.1  3409.9  3401.0  3409.5  25097.0
+3 2025-07-08 09:24:00+05:30  3409.5  3414.5  3409.1  3413.1  12643.0
+4 2025-07-08 09:27:00+05:30  3414.0  3419.0  3413.0  3416.0  32980.0
+2025-08-07 18:04:43,465 - main - INFO - Total rows: 2875
+2025-08-07 18:04:43,480 - main - ERROR - Error running backtest: 'sma_50'
+2025-08-07 18:05:08,134 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:06:25,760 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:07:18,972 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:07:22,559 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:07:26,225 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:07:29,715 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:07:29,901 - main - INFO - Running backtest for TCS...
+2025-08-07 18:07:30,311 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-08 09:15:00 2025-08-07 15:30:00
+2025-08-07 18:07:31,233 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-08 09:15:00+05:30  3406.6  3409.6  3401.4  3407.2  23993.0
+1 2025-07-08 09:18:00+05:30  3407.8  3410.2  3403.5  3404.0  20986.0
+2 2025-07-08 09:21:00+05:30  3404.1  3409.9  3401.0  3409.5  25097.0
+3 2025-07-08 09:24:00+05:30  3409.5  3414.5  3409.1  3413.1  12643.0
+4 2025-07-08 09:27:00+05:30  3414.0  3419.0  3413.0  3416.0  32980.0
+2025-08-07 18:07:31,234 - main - INFO - Total rows: 2875
+2025-08-07 18:07:31,244 - main - ERROR - Error running backtest: 'sma_50'
+2025-08-07 18:10:34,021 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:10:43,256 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:52:30,809 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:52:53,140 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:55:27,890 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:55:34,402 - dhan_client - INFO - Loading existing Security Master...
+2025-08-07 18:55:41,542 - main - INFO - Running backtest for TCS...
+2025-08-07 18:55:42,072 - dhan_client - INFO - DEBUG CALL >>> 11536 NSE_EQ EQUITY 1 2025-07-08 09:15:00 2025-08-07 15:30:00
+2025-08-07 18:55:43,796 - main - INFO - Received DataFrame for TCS:
+                  timestamp    open    high     low   close   volume
+0 2025-07-08 09:15:00+05:30  3406.6  3409.6  3401.4  3407.2  23993.0
+1 2025-07-08 09:18:00+05:30  3407.8  3410.2  3403.5  3404.0  20986.0
+2 2025-07-08 09:21:00+05:30  3404.1  3409.9  3401.0  3409.5  25097.0
+3 2025-07-08 09:24:00+05:30  3409.5  3414.5  3409.1  3413.1  12643.0
+4 2025-07-08 09:27:00+05:30  3414.0  3419.0  3413.0  3416.0  32980.0
+2025-08-07 18:55:43,796 - main - INFO - Total rows: 2875
+2025-08-07 18:55:43,798 - main - ERROR - Error running backtest: 'TradingStrategy' object has no attribute 'config'
+2025-08-07 18:56:21,760 - dhan_client - INFO - Loading existing Security Master...
