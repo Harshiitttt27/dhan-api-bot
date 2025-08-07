@@ -267,18 +267,29 @@ class BacktestEngine:
         self.strategy = strategy
         self.config = Config()
         self.trades = {}
+        self.daily_trades = {}  # Store one trade per day per symbol
 
     def run_backtest(self, df: pd.DataFrame, symbol: str) -> Dict:
-        """Run backtest on historical data as per strict SMA50 rejection strategy"""
+        """Run backtest on historical data as per strict SMA50 rejection strategy, one trade per day"""
         if df is None or df.empty:
             return {'error': 'No data provided for backtest'}
 
         print(f"\n=== Backtest Starting for {symbol} ===")
         df = self.strategy.analyze_candle_data(df)
         trades = []
+        daily_trades = {}  # date -> trade
         i = 0
+        last_trade_date = {}  # symbol -> date
 
         while i < len(df):
+            row = df.iloc[i]
+            trade_date = row['timestamp'].date()
+
+            # Skip if already traded today for this symbol
+            if symbol in last_trade_date and last_trade_date[symbol] == trade_date:
+                i += 1
+                continue
+
             # Check 10AM Setup
             signal = self.strategy.check_10am_signal(df, i)
             if signal:
@@ -312,13 +323,21 @@ class BacktestEngine:
                     trade_result = self._simulate_trade(df, entry_index, trade_params, signal, symbol)
                     if trade_result:
                         trades.append(trade_result)
+                        # Record last trade date for this symbol
+                        last_trade_date[symbol] = trade_date
+                        # Store only one trade per day
+                        daily_trades[trade_date] = trade_result
                         i = trade_result['exit_index']  # Move to exit candle
                         continue
             i += 1
 
         self.trades[symbol] = self._calculate_performance_metrics(trades)
+        self.daily_trades[symbol] = daily_trades
         print(f"[{symbol}] Backtest Completed → {self.trades[symbol]}")
-        return self.trades[symbol]
+        # Add daily_trades to result for UI display
+        result = self.trades[symbol]
+        result['daily_trades'] = list(daily_trades.values())
+        return result
 
     def _simulate_trade(self, df: pd.DataFrame, entry_index: int,
                         trade_params: Dict, signal: str, symbol: str) -> Dict:
