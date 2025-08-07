@@ -6,6 +6,10 @@ class TradingStrategy:
     def __init__(self):
         self.config = Config()
         self.RR = 5  # 1:5 Risk Reward
+        self.position = None
+        self.traded_today = False
+        self.rejected_day = None
+        self.rejection_time = None
 
     def analyze_candle_data(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
@@ -86,3 +90,81 @@ class TradingStrategy:
             'target_price': target_price,
             'candle_size': candle_size,
         }
+    def reset_daily_state(self, now):
+        if self.position is None:
+            self.traded_today = False
+            self.rejected_day = None
+            self.rejection_time = None
+
+    def get_sma(self, data, index, period=50):
+        if index < period:
+            return None
+        return sum(data[i]['close'] for i in range(index - period, index)) / period
+
+    def can_trade(self, df, i):
+        now = df[i]['timestamp']
+        date_str = now.date().isoformat()
+
+        # Reset daily state if new day
+        if i > 0 and now.date() != df[i - 1]['timestamp'].date():
+            self.reset_daily_state(now)
+
+        # Only one trade per day
+        if self.traded_today:
+            return False
+
+        # If there was a rejection today, wait for 3 candles
+        if self.rejected_day == date_str:
+            if (now - self.rejection_time).total_seconds() < 9 * 60:  # 3 candles of 3 min
+                return False
+
+        if now.hour != 10 or now.minute != 0:
+            return False
+
+        return True
+
+    def entry_rejected(self, df, i, sma):
+        # Check if SMA or stop-loss was touched in the first 3 candles after 10:00
+        stop_loss_buffer = 0.005  # 0.5% buffer for SL (can be adjusted)
+        close_price = df[i]['close']
+        for j in range(i + 1, i + 4):
+            if j >= len(df):
+                break
+            low = df[j]['low']
+            high = df[j]['high']
+            if sma and (low <= sma <= high):
+                return True
+            if low <= close_price * (1 - stop_loss_buffer):
+                return True
+        return False
+
+    def should_enter(self, df, i):
+        now = df[i]['timestamp']
+        date_str = now.date().isoformat()
+
+        if not self.can_trade(df, i):
+            return False
+
+        sma = self.get_sma(df, i)
+        if sma is None:
+            return False
+
+        if self.entry_rejected(df, i, sma):
+            self.rejected_day = date_str
+            self.rejection_time = now
+            return False
+
+        # Passed all checks, can enter trade
+        return True
+
+    def enter_trade(self, df, i):
+        self.position = {
+            'entry_time': df[i + 3]['timestamp'],
+            'entry_price': df[i + 3]['close']
+        }
+        self.traded_today = True
+        return self.position
+
+    def check_exit(self, df, i):
+        # Placeholder for exit logic
+        return None

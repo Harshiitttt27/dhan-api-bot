@@ -76,7 +76,10 @@ class BacktestEngine:
                     if entry_time.time() > self.config.NO_ENTRY_AFTER:
                         i = entry_index
                         continue
-
+                    
+                    if pd.isna(df.iloc[entry_index].get('SMA_50')):
+                        i = entry_index
+                        continue
                     # Simulate trade
                     trade_result = self._simulate_trade(df, entry_index, trade_params, signal, symbol)
                     if trade_result:
