@@ -81,19 +81,36 @@ function displayBacktestResults(results) {
 
         // Populate Trade History tab
         if (result.trades && result.trades.length > 0) {
-            result.trades.forEach(trade => {
-                const pnlClass = trade.pnl >= 0 ? 'positive' : 'negative';
-                tradesHtml += `
-                    <tr>
-                        <td>${trade.symbol}</td>
-                        <td>${trade.signal}</td>
-                        <td>₹${trade.entry_price.toFixed(2)}</td>
-                        <td>₹${trade.exit_price.toFixed(2)}</td>
-                        <td class="${pnlClass}">₹${trade.pnl.toFixed(2)}</td>
-                        <td>${trade.exit_reason || ''}</td>
-                    </tr>
-                `;
-            });
+            const seenDates = new Set();
+
+if (result.trades && result.trades.length > 0) {
+    const seenDates = new Set();
+
+    // Optional: sort by entry time DESCENDING to get latest trade per day
+    const sortedTrades = [...result.trades].sort((a, b) => new Date(b.entry_time) - new Date(a.entry_time));
+
+    sortedTrades.forEach(trade => {
+        const tradeDate = new Date(trade.entry_time).toISOString().split("T")[0];
+
+        if (seenDates.has(tradeDate)) return; // already added a trade for this date
+
+        seenDates.add(tradeDate); // mark this date as handled
+
+        const pnlClass = trade.pnl >= 0 ? 'positive' : 'negative';
+        tradesHtml += `
+            <tr>
+                <td>${trade.symbol}</td>
+                <td>${trade.signal}</td>
+                <td>₹${trade.entry_price.toFixed(2)}</td>
+                <td>₹${trade.exit_price.toFixed(2)}</td>
+                <td class="${pnlClass}">₹${trade.pnl.toFixed(2)}</td>
+                <td>${trade.exit_reason || ''}</td>
+                <td>${new Date(trade.entry_time).toLocaleString()}</td>
+                <td>${new Date(trade.exit_time).toLocaleString()}</td>
+            </tr>
+        `;
+    });
+};
         }
     }
 
