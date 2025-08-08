@@ -38,9 +38,32 @@ class BacktestEngine:
                     rej_idx = rejection['index']
                     trade_params = self.strategy.calculate_entry_exit(rejection, signal)
 
+                    max_rejection_candles = int((60 / self.config.RESAMPLE_MINUTES))  # e.g. 60 minutes -> 20 candles (3-min)
+                    if (rej_idx - i) > max_rejection_candles:
+                        # rejection too late relative to 10:00 — skip
+                        i = rej_idx + 1
+                        continue
+
                     entry_index = rej_idx + 3
                     if entry_index >= len(df):
                         i += 1
+                        continue
+                    # Check for SMA crossing between 10:00 and rejection (dirty market) ---
+                    crossed_through_sma = False
+                    for k in range(i + 1, rej_idx + 1):
+                        r = df.iloc[k]
+                        sma_k = r.get('SMA_50', None)
+                        if pd.isna(sma_k):
+                            continue
+                        # body crosses SMA (open on one side, close on other) -> dirty
+                        # Body must cross through SMA (both open and close on opposite sides)
+                        if (r['open'] < sma_k and r['close'] > sma_k) or (r['open'] > sma_k and r['close'] < sma_k):
+                            crossed_through_sma = True
+                            break
+# Wick-only touches are ignored here (Excel logic)
+
+                    if crossed_through_sma:
+                        i = rej_idx + 1
                         continue
 
                     # ✅ Check if any of the next 3 candles touch SMA_50
@@ -50,12 +73,18 @@ class BacktestEngine:
                         sma = row_j.get('SMA_50', None)
                         if pd.isna(sma):
                             continue
-                        if signal == "LONG_SETUP" and row_j['low'] <= sma:
-                            sma_touched = True
-                            break
-                        elif signal == "SHORT_SETUP" and row_j['high'] >= sma:
-                            sma_touched = True
-                            break
+                        if signal == "LONG_SETUP":
+    # Reject only if the candle is already trading below SMA and wick pierces it
+                            if row_j['open'] < sma and row_j['close'] < sma and row_j['low'] <= sma:
+                                      sma_touched = True
+                                      break
+                        elif signal == "SHORT_SETUP":
+    # Reject only if the candle is already trading above SMA and wick pierces it
+                            if row_j['open'] > sma and row_j['close'] > sma and row_j['high'] >= sma:
+                                      sma_touched = True
+                                      break
+
+
 
                     if sma_touched:
                         i = entry_index
@@ -80,6 +109,34 @@ class BacktestEngine:
                     if pd.isna(df.iloc[entry_index].get('SMA_50')):
                         i = entry_index
                         continue
+
+                    # --- 3) REQUIRE ENTRY LIMIT TO BE FILLED ON ENTRY CANDLE ---
+                    entry_candle = df.iloc[entry_index]
+                    entry_price = trade_params['entry_price']
+                    ambiguous_same_candle_sl = False
+
+                    if signal == "LONG_SETUP":
+                        # entry only if the entry candle's high reached the entry_price
+                        if entry_candle['high'] < entry_price:
+                            # limit not hit -> no entry
+                            i = entry_index
+                            continue
+                        # if entry candle also contains SL, it's ambiguous -> skip (we can't determine ordering)
+                        if entry_candle['low'] <= sl:
+                            ambiguous_same_candle_sl = True
+                    else:  # SHORT_SETUP
+                        if entry_candle['low'] > entry_price:
+                            # limit not hit -> no entry
+                            i = entry_index
+                            continue
+                        if entry_candle['high'] >= sl:
+                            ambiguous_same_candle_sl = True
+
+                    if ambiguous_same_candle_sl:
+                        # ambiguous intrabar behavior (entry candle also touched SL) => skip trade
+                        i = entry_index
+                        continue
+                    
                     # Simulate trade
                     trade_result = self._simulate_trade(df, entry_index, trade_params, signal, symbol)
                     if trade_result:

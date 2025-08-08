@@ -33,3 +33,4 @@ class Config:
     TRADE_END_TIME = time(15, 30)    # 3:30 PM
     NO_ENTRY_AFTER = time(13, 0)     # 1:00 PM
     EXIT_ALL_TIME = time(15, 0)      # 3:00 PM
+    RESAMPLE_MINUTES = 3  # Resample to 3-minute candles
